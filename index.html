@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a0610" />
+  <title>Quiz da vida do Moize 💗</title>
+
+  <!-- Fontes: Nunito (texto) + Dancing Script (assinatura) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fundo: brilhos + corações flutuando (criados pelo script.js) -->
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+  <div class="hearts-bg" id="hearts-bg" aria-hidden="true"></div>
+
+  <!-- Canvas dos confetes -->
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <!-- Botão discreto de música (coloque o arquivo musica.mp3 na mesma pasta) -->
+  <button class="music-btn" id="music-btn" type="button" aria-label="Tocar música" title="Música">
+    <span id="music-icon">♪</span>
+  </button>
+  <audio id="audio" src="musica.mp3" loop preload="none"></audio>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <main>
+
+    <!-- =========================================================
+         TELA 1 — QUIZ
+    ========================================================== -->
+    <section class="screen active" id="screen-quiz" aria-label="Quiz">
+      <div class="container">
+
+        <!-- Introdução -->
+        <div class="intro" id="intro">
+          <div class="envelope-deco" aria-hidden="true">💌</div>
+          <h1 class="title">QUIZ DA VIDA DO MOIZE 💗</h1>
+          <p class="subtitle">Será que a Laura realmente conhece o nosso amor?</p>
+          <p class="note">Responda tudinho certinho para desbloquear uma surpresinha do Baio ❤️</p>
+          <button class="btn btn-primary" id="start-btn" type="button">COMEÇAR 💗</button>
+        </div>
+
+        <!-- Perguntas -->
+        <div class="quiz" id="quiz" hidden>
+          <div class="progress-wrap">
+            <p class="progress-label" id="progress-label">Pergunta 1 de 4</p>
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" id="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="card question-card" id="question-card">
+            <h2 class="question" id="question-text"></h2>
+            <div class="options" id="options"></div>
+            <p class="feedback" id="feedback" aria-live="polite"></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TELA 2 — PARABÉNS (bloqueada até terminar o quiz)
+    ========================================================== -->
+    <section class="screen" id="screen-congrats" aria-label="Parabéns" hidden>
+      <div class="container congrats">
+        <div class="stars-row" aria-hidden="true">
+          <span>✨</span><span>❤️</span><span>✨</span>
+        </div>
+        <h2 class="congrats-title">PARABENS AMOIZEEEE VOCE GANHOU O QUIZ DEUZ ZO IVE</h2>
+        <div class="big-heart" aria-hidden="true">💗</div>
+        <button class="btn btn-primary btn-big" id="continue-btn" type="button">CONTINUAR ❤️</button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TELA 3 — MENSAGEM + MOMENTOS (bloqueada até clicar em continuar)
+    ========================================================== -->
+    <section class="screen" id="screen-message" aria-label="Mensagem do Baio" hidden>
+      <div class="container">
+
+        <!-- Recadinho -->
+        <div class="message-block">
+          <h2 class="title title-sm">Um recadinho do Baio 💌</h2>
+          <div class="letter" id="letter">
+            <p class="letter-text" id="letter-text"></p>
+            <p class="skip-hint" id="skip-hint">toque no recado para ler tudo de uma vez</p>
+          </div>
+        </div>
+
+        <!-- Momentinhos favoritos -->
+        <div class="moments">
+          <h2 class="title title-sm reveal">Nossos momentinhos favoritos ❤️</h2>
+          <p class="moments-intro reveal">Porque as coisas mais simples com você acabam virando meus momentos favoritos.</p>
+
+          <div class="cards">
+            <article class="moment-card reveal" tabindex="0">
+              <span class="moment-num">01</span>
+              <div class="moment-emoji" aria-hidden="true">📱</div>
+              <h3>TikTok na Ondinha 📱</h3>
+              <p>Ver vídeo no TikTok na ondinha muito felizinhos</p>
+            </article>
+
+            <article class="moment-card reveal" tabindex="0">
+              <span class="moment-num">02</span>
+              <div class="moment-emoji" aria-hidden="true">🫂</div>
+              <h3>Agarradinhos 🫂</h3>
+              <p>Ficar agarradinho com o Moize</p>
+            </article>
+
+            <article class="moment-card reveal" tabindex="0">
+              <span class="moment-num">03</span>
+              <div class="moment-emoji" aria-hidden="true">💋</div>
+              <h3>Chuva de beijinhos 💋</h3>
+              <p>Ganhar chuva de beijinho na vida do Moize</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Final -->
+        <div class="final reveal">
+          <p class="final-love">Te amo, Laura ❤️</p>
+          <p class="final-sign">— do seu Baio</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
